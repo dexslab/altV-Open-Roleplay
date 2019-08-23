@@ -11,8 +11,8 @@ chat.registerCmd('pos', player => {
 chat.registerCmd('veh', player => {
     new alt.Vehicle(
         'infernus',
-        player.pos.x,
-        player.pos.y,
+        player.pos.x + 1,
+        player.pos.y + 1,
         player.pos.z,
         0,
         0,

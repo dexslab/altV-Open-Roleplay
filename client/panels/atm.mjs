@@ -4,6 +4,7 @@ import { WebView } from 'client/utility/webview.mjs';
 alt.log(`Loaded: panels->atm.mjs`);
 
 let webview;
+let updateTryCount = 0;
 
 // Show the Dialogue for the ATM Menu.
 export function showDialogue() {
@@ -24,10 +25,18 @@ export function updateCash(value) {
 
     if (webview.ready) {
         webview.emit(webview, 'setCash', value);
+        updateTryCount = 0;
     } else {
-        alt.setTimeout(() => {
-            webview.emit(webview, 'setCash', value);
-        }, 1000);
+        if (updateTryCount <= 25) {
+            alt.log(`Update Try Count: ${updateTryCount}`);
+
+            alt.setTimeout(() => {
+                updateCash(value);
+            }, 100);
+            updateTryCount++;
+        } else {
+            updateTryCount = 0;
+        }
     }
 }
 
@@ -37,10 +46,17 @@ export function updateBank(value) {
 
     if (webview.ready) {
         webview.emit(webview, 'setBank', value);
+        updateTryCount = 0;
     } else {
-        alt.setTimeout(() => {
-            webview.emit(webview, 'setBank', value);
-        }, 1000);
+        if (updateTryCount <= 25) {
+            alt.log(`Update Try Count: ${updateTryCount}`);
+            alt.setTimeout(() => {
+                updateBank(value);
+            }, 100);
+            updateTryCount++;
+        } else {
+            updateTryCount = 0;
+        }
     }
 }
 

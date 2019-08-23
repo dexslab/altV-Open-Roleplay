@@ -14,6 +14,8 @@ import * as eventsKeyup from 'client/events/keyup.mjs';
 
 import * as systemsInteraction from 'client/systems/interaction.mjs';
 import * as systemsInventory from 'client/systems/inventory.mjs';
+import * as systemsVehicleCustomization from 'client/systems/vehicleCustomization.mjs';
+import * as systemsInteriors from 'client/systems/interiors.mjs';
 import * as clothing from 'client/customizers/clothing.mjs';
 
 native.startAudioScene('FBI_HEIST_H5_MUTE_AMBIENCE_SCENE');
