@@ -19,12 +19,14 @@ alt.on('interior:entered', id => {
   const vehicle = alt.Player.local.vehicle;
   if (Interiors.includes(id)) {
     if (vehicle) {
-      alt.log(`Entered Garage: ${id}`);
+      if (alt.Player.local.scriptID === native.getPedInVehicleSeat(vehicle.scriptID, -1)) {
+        alt.log(`Entered Garage: ${id}`);
 
-      alt.on('update', interactionKey);
-      interactionShown = true;
+        alt.on('update', interactionKey);
+        interactionShown = true;
 
-      alt.on('keydown', keyhandler);
+        alt.on('keydown', keyhandler);
+      }
     }
   }
 });
@@ -33,14 +35,16 @@ alt.on('interior:left', id => {
   if (Interiors.includes(id)) {
     const vehicle = alt.Player.local.vehicle;
     if (vehicle) {
-      alt.log(`Left Garage: ${id}`);
+      if (alt.Player.local.scriptID === native.getPedInVehicleSeat(vehicle.scriptID, -1)) {
+        alt.log(`Left Garage: ${id}`);
 
-      if (interactionShown) {
-        alt.off('update', interactionKey);
-        interactionShown = false;
+        if (interactionShown) {
+          alt.off('update', interactionKey);
+          interactionShown = false;
+        }
+        
+        alt.off('keydown', keyhandler);
       }
-      
-      alt.off('keydown', keyhandler);
     }
   }
 });
@@ -49,7 +53,7 @@ alt.on('interior:left', id => {
 function interactionKey() {
   native.beginTextCommandDisplayHelp('STRING');
   native.addTextComponentSubstringPlayerName(
-      `Press ~INPUT_CONTEXT~ for garage lulz`
+      `Press ~INPUT_CONTEXT~ for vehicle customization`
   );
   native.endTextCommandDisplayHelp(0, false, true, -1);
 
@@ -60,17 +64,19 @@ function interactionKey() {
 
 function keyhandler(key) {
   if (key === 69) {
-    
-    const veh = alt.Player.local.vehicle;
-    if (veh !== null && veh !== undefined) {
-      alt.off('update', interactionKey);
-      interactionShown = false;
+    const vehicle = alt.Player.local.vehicle;
+    if (vehicle) {
+      if (alt.Player.local.scriptID === native.getPedInVehicleSeat(vehicle.scriptID, -1)) {
+        alt.off('update', interactionKey);
+        interactionShown = false;
   
-      // Show the menu here lul
-      webview = new WebView('vehicleCustomization');
-      webview.on('fetchModList', buildModList);
-      webview.on('updateLocalVehicle', updateLocalVehicle);
-      webview.on('saveChanges', saveVehicle);
+        webview = new WebView('vehicleCustomization');
+        webview.on('fetchModList', buildModList);
+        webview.on('updateLocalVehicle', updateLocalVehicle);
+        webview.on('saveChanges', saveVehicle);
+      }
+    } else {
+      alt.off('keydown', keyhandler);
     }
   }
 }
