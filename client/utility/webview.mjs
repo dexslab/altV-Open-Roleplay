@@ -5,6 +5,7 @@ import * as panelsPanelStatus from 'client/panels/panelstatus.mjs';
 export const pages = {
   inventory: 'http://resources/orp/client/html/inventory/index.html',
   atm: 'http://resources/orp/client/html/atm/index.html',
+  vehicleCustomization: 'http://resources/orp/client/html/vehicleCustoms/index.html'
 }
 
 export class WebView {

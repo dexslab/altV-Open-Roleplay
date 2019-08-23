@@ -8,12 +8,17 @@ import * as customizersFace from '../customizers/face.mjs';
 import * as utilityLocationHelper from '../utility/locationhelper.mjs';
 import * as characterName from '../character/name.mjs';
 import * as systemsInteraction from '../systems/interaction.mjs';
+import * as systemsVehicleCustoms from '../systems/vehicleCustoms.mjs';
 import * as systemsInventory from '../systems/inventory.mjs';
 import * as interactionAtms from '../interactions/atms.mjs';
 import * as characterClothing from '../character/clothing.mjs';
 
 // On load; send a message.
 console.log('Loaded: clientEvents->events.mjs');
+
+
+// VEHICLES
+alt.onClient('vehicle:modify', systemsVehicleCustoms.handleModification);
 
 // ====================================================
 // Registration

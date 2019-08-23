@@ -1,7 +1,6 @@
 import * as alt from 'alt';
 import * as native from 'natives';
 
-let inShop = false;
 let lastShop = 0;
 
 alt.setInterval(() => {
@@ -20,4 +19,4 @@ alt.setInterval(() => {
       lastShop = currInterior;
     }
   }
-}, 2000);
+}, 500);
