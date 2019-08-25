@@ -1,45 +1,129 @@
+@font-face {
+  font-family: 'Circular';
+  src: url('../fonts/Circular-Bold.woff2') format('woff2'),
+    url('../fonts/Circular-Bold.woff') format('woff'),
+    url('../fonts/Circular-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Circular';
+  src: url('../fonts/Circular-Book.woff2')format('woff2'),
+    url('../fonts/Circular-Book.woff') format('woff'),
+    url('../fonts/Circular-Book.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html,
 body {
-    height: 100%;
+  height: 100%;
+  font-family: 'Circular';
 }
 
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0) !important;
+html {
+  overflow: hidden;
 }
 
-.customs {
-    width: 20%;
-    padding: 20px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    background: rgba(0,0,0,0.5);
-    color: #FFFFFF;
+.vehicle-menu {
+  width: 320px;
+  height: 650px;
+  margin-right: 5%;
+  right: 0;
+  border-radius: 30px;
+  position: absolute;
+  color: white;
 }
 
-.customs ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.tabs {
+  height: 75px;
 }
 
-.customs ul li {
-    padding: 15px;
-    margin: 0;
-    display: block;
+.tab {
+  width: calc(320px / 3);
+  height: 75px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  background: rgb(47, 51, 60);
+  cursor: pointer;
 }
 
-.center {
+.tab.selected {
+  background: rgb(102, 132, 228);
+}
+
+.tab:first-of-type {
+  border-top-left-radius: 30px;
+}
+
+.tab:last-of-type {
+  border-top-right-radius: 30px;
+}
+
+.footer {
+    width: 100%;
+    height: 50px;
+    background: rgb(102, 132, 228);
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
     text-align: center;
+    padding-top: 20px;
 }
 
-.align-right {
-    float: right;
+/*********************************/
+/*********      MODS     *********/
+/*********************************/
+
+.mod-list {
+  overflow-y: auto;
+  height: 500px;
+  background: rgba(47, 51, 60, 0.75);
 }
 
-.align-left {
-    float: left;
+.mod {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: auto;
+  grid-row-gap: 10px;
+  grid-template-areas:
+    'title count'
+    'switcher switcher';
+  padding: 20px;
+}
+
+.title {
+  grid-area: title;
+}
+
+.count {
+  grid-area: count;
+  text-align: right;
+}
+
+/********************************/
+/****      Item Switcher     ****/
+/********************************/
+
+.item-switcher {
+  grid-area: switcher;
+  width: 100%;
+  text-align: center;
+  background: rgba(56, 57, 62, 1);
+  padding: 5px;
+}
+
+.item-switcher button {
+  background: rgba(0, 0, 0, 0);
+  border: 0;
+  color: #feffff;
+}
+
+.item-switcher button.left {
+  float: left;
+}
+
+.item-switcher button.right {
+  float: right;
 }
