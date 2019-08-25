@@ -42,7 +42,8 @@ export class WebView {
       func,
     });
 
-    this.view.on(name, func.bind(this));
+    const index = this.events.length - 1;
+    this.view.on(this.events[index].name, this.events[index].func.bind(this));
   }
 
   // This calls webview.emit()

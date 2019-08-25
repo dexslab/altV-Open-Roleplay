@@ -35,6 +35,7 @@ function destroy(hash) {
 }
 
 function use(hash) {
+    alt.log('Fired');
     alt.emitServer('inventory:UseItem', hash);
 }
 
