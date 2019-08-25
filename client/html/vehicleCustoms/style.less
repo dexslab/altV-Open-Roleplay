@@ -1,7 +1,10 @@
+@sidebarWidth: 320px;
+@tabHeight: 75px;
+@footerHeight: 50px;
 
 .vehicle-menu {
-  width: 320px;
-  height: 650px;
+  width: @sidebarWidth;
+  height: 100%;
   margin-right: 5%;
   right: 0;
   border-radius: 30px;
@@ -11,47 +14,50 @@
 
 .tabs {
   height: 75px;
-}
-
-.tab {
-  width: calc(320px / 3);
-  height: 75px;
-  display: inline-block;
-  text-align: center;
-  vertical-align: middle;
-  background: rgb(47, 51, 60);
-  cursor: pointer;
-}
-
-.tab.selected {
-  background: rgb(102, 132, 228);
-}
-
-.tab:first-of-type {
-  border-top-left-radius: 30px;
-}
-
-.tab:last-of-type {
-  border-top-right-radius: 30px;
+  .tab {
+    width: calc(@sidebarWidth / 3);
+    height: 75px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    background: rgb(47, 51, 60);
+    cursor: pointer;
+    
+    &.selected {
+      background: rgb(102, 132, 228);
+    }
+    
+    &:first-of-type {
+      border-top-left-radius: 30px;
+    }
+    
+    &:last-of-type {
+      border-top-right-radius: 30px;
+    }
+  }
 }
 
 .footer {
-    width: 100%;
-    height: 50px;
-    background: rgb(102, 132, 228);
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    text-align: center;
-    padding-top: 20px;
+  width: 100%;
+  height: 50px;
+  background: rgb(102, 132, 228);
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  text-align: center;
+  padding-top: 20px;
 }
 
 /*********************************/
 /*********      MODS     *********/
 /*********************************/
 
+#app {
+  max-height: 100% !important;
+}
+
 .mod-list {
   overflow-y: auto;
-  height: 500px;
+  max-height: calc(900px - @footerHeight - @tabHeight);
   background: rgba(47, 51, 60, 0.75);
 }
 
@@ -64,15 +70,15 @@
     'title count'
     'switcher switcher';
   padding: 20px;
-}
 
-.title {
-  grid-area: title;
-}
-
-.count {
-  grid-area: count;
-  text-align: right;
+  .title {
+    grid-area: title;
+  }
+  
+  .count {
+    grid-area: count;
+    text-align: right;
+  }
 }
 
 /********************************/
@@ -85,18 +91,27 @@
   text-align: center;
   background: rgba(56, 57, 62, 1);
   padding: 5px;
+
+  
+  button {
+    background: rgba(0, 0, 0, 0);
+    border: 0;
+    color: #feffff;
+    
+    &.left {
+      float: left;
+    }
+  
+    &.right {
+      float: right;
+    }
+  }
 }
 
-.item-switcher button {
-  background: rgba(0, 0, 0, 0);
-  border: 0;
-  color: #feffff;
+.scroll::-webkit-scrollbar {
+  width: 8px;
 }
-
-.item-switcher button.left {
-  float: left;
-}
-
-.item-switcher button.right {
-  float: right;
+ 
+.scroll::-webkit-scrollbar-thumb {
+  background: rgb(102, 132, 228); 
 }
