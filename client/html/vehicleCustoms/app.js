@@ -9,7 +9,6 @@ class App extends Component {
     super(props);
     this.state = {
       message: 'Loading...',
-      tab: 0,
       mods: [],
     };
   }
@@ -32,12 +31,6 @@ class App extends Component {
     });
   }
 
-  tabChange(tab) {
-    this.setState({
-      tab,
-    });
-  }
-
   saveVehicle() {
     alt.emit('saveChanges');
     alt.emit('close');
@@ -46,27 +39,15 @@ class App extends Component {
 	render(props, state) {
 		return (
       h('div', { id:'app' },
-        h(Tabs, { selectedTab: this.state.tab, tabChange: this.tabChange.bind(this) }),
+        h('div', { class: 'tab' },
+          h('h1', { class: 'title' }, 'Vehicle Customs'),
+        ),
         this.state.mods.length > 0 && h(ModList, { mods: this.state.mods }),
         h('div', { class: 'footer', onclick: this.saveVehicle }, 'Save Modifications'),
 			)
 		);
 	}
 }
-
-const Tabs = ({ selectedTab, tabChange }) => {
-  return h('div', { class: 'tabs' },
-    h(Tab, { title: 'tab 1', index: 0, selectedTab, tabChange }),
-    h(Tab, { title: 'tab 2', index: 1, selectedTab, tabChange }),
-    h(Tab, { title: 'tab 3', index: 2, selectedTab, tabChange }),
-  );
-};
-
-const Tab = ({ title, selectedTab, index, tabChange }) => {
-  return h('div', { onclick: () => tabChange(index), class: `tab ${selectedTab === index ? 'selected' : ''}` },
-    h('p', null, `${title}`),
-  );
-};
 
 const ModList = ({ mods }) => {
   const modItem = mods.map(mod => (
