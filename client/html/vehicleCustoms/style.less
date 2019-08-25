@@ -2,14 +2,23 @@
 @tabHeight: 75px;
 @footerHeight: 50px;
 
+@dark: rgb(47, 51, 60);
+@interactive: rgb(102, 132, 228);
+
 .vehicle-menu {
   width: @sidebarWidth;
   height: 100%;
-  margin-right: 5%;
-  right: 0;
+  float: right;
   border-radius: 30px;
-  position: absolute;
+  margin: 25px 50px 0 0;
   color: white;
+}
+
+#app {
+  display: grid;
+  grid-template-columns: @sidebarWidth;
+  grid-template-rows: @tabHeight 1fr @footerHeight;
+  height: 90%;
 }
 
 .tabs {
@@ -20,11 +29,11 @@
     display: inline-block;
     text-align: center;
     vertical-align: middle;
-    background: rgb(47, 51, 60);
+    background: @dark;
     cursor: pointer;
     
     &.selected {
-      background: rgb(102, 132, 228);
+      background: @interactive;
     }
     
     &:first-of-type {
@@ -40,7 +49,7 @@
 .footer {
   width: 100%;
   height: 50px;
-  background: rgb(102, 132, 228);
+  background: @interactive;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   text-align: center;
@@ -51,13 +60,9 @@
 /*********      MODS     *********/
 /*********************************/
 
-#app {
-  max-height: 100% !important;
-}
-
 .mod-list {
   overflow-y: auto;
-  max-height: calc(900px - @footerHeight - @tabHeight);
+  // max-height: calc(900px - @footerHeight - @tabHeight);
   background: rgba(47, 51, 60, 0.75);
 }
 
@@ -89,7 +94,7 @@
   grid-area: switcher;
   width: 100%;
   text-align: center;
-  background: rgba(56, 57, 62, 1);
+  background: fade(@dark, 75%);
   padding: 5px;
 
   
@@ -113,5 +118,5 @@
 }
  
 .scroll::-webkit-scrollbar-thumb {
-  background: rgb(102, 132, 228); 
+  background: @interactive; 
 }
