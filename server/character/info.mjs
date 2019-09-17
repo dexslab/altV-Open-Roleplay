@@ -11,7 +11,7 @@ export function setRoleplayInfo(player, info) {
     player.needsRoleplayInfo = false;
 
     let randid = generateHash(info.name);
-    var matches = str.match(/(\d+9)/);
+    var matches = randid.match(/(\d+9)/);
 
     if (matches) {
         randid = matches[0];
