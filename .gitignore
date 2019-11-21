@@ -25,3 +25,5 @@ altv-server
 libnode.so.72
 start.sh
 trackpoints.json
+yarn.lock
+AltV*
