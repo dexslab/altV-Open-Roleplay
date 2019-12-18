@@ -13,6 +13,7 @@ import * as systemsAnimation from '/client/systems/animation.mjs';
 import * as systemsVehicles from '/client/systems/vehicles.mjs';
 
 // Panels
+<<<<<<< HEAD:resources/orp/client/serverEvents/events.mjs
 import * as panelsChat from '/client/panels/chat.mjs';
 import * as panelsAtm from '/client/panels/atm.mjs';
 import * as panelsInfo from '/client/panels/info.mjs';
@@ -25,6 +26,19 @@ import * as panelsVehicleVendor from '/client/panels/vehiclevendor.mjs';
 import * as panelsCharacterSelect from '/client/panels/characterselect.mjs';
 
 import * as meta from '/client/meta/meta.mjs';
+=======
+import * as panelsChat from '/client/panels/chat.js';
+import * as panelsInfo from '/client/panels/info.js';
+import * as panelsInventory from '/client/panels/inventory.js';
+import * as panelsClothing from '/client/panels/clothing.js';
+import * as panelsCharacter from '/client/panels/character.js';
+import * as panelsMdc from '/client/panels/mdc.js';
+import * as panelsHud from '/client/panels/hud.js';
+import * as panelsVehicleVendor from '/client/panels/vehiclevendor.js';
+import * as panelsCharacterSelect from '/client/panels/characterselect.js';
+
+import * as meta from '/client/meta/meta.js';
+>>>>>>> 89b5613... Paycheck Deprecation for Reward Point Exchange:resources/orp/client/serverEvents/events.js
 
 // Utility
 import * as utilityScreenFades from '/client/utility/screenfades.mjs';
@@ -68,13 +82,6 @@ alt.onServer('blip:CreateBlip', blipsBlipHelper.createBlip);
 alt.onServer('blip:CreateAreaBlip', blipsBlipHelper.createAreaBlip);
 alt.onServer('blip:CreateSectorBlip', blipsBlipHelper.createSectorBlip);
 alt.onServer('blip:CleanSectorBlips', blipsBlipHelper.cleanSectorBlips);
-
-// =======================================================
-// ATM Events
-alt.onServer('atm:ShowDialogue', panelsAtm.showDialogue);
-alt.onServer('atm:UpdateCash', panelsAtm.updateCash);
-alt.onServer('atm:UpdateBank', panelsAtm.updateBank);
-alt.onServer('atm:ShowSuccess', panelsAtm.showSuccess);
 
 // =======================================================
 // Clothing Events

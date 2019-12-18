@@ -176,6 +176,7 @@ alt.on('sync:Player', player => {
     player.syncDoorStates();
     player.syncArrest();
     player.screenFadeIn(1500);
+    player.syncRewardPoints();
 
     if (player.data.dead) {
         player.health = 0;

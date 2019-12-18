@@ -1,6 +1,7 @@
 import * as alt from 'alt';
 // Imports are named after the folder and
 // file name. ie. characterClothing = ../character/clothing
+<<<<<<< HEAD:resources/orp/server/clientEvents/events.mjs
 import * as registrationLogin from '../registration/login.mjs';
 import * as characterFace from '../character/face.mjs';
 import * as utilityLocationHelper from '../utility/locationhelper.mjs';
@@ -16,6 +17,22 @@ import * as systemsSkills from '../systems/skills.mjs';
 import * as systemsVehicleVendor from '../systems/vehiclevendor.mjs';
 import * as characterClothing from '../character/clothing.mjs';
 import * as chat from '../chat/chat.mjs';
+=======
+import * as registrationLogin from '../registration/login.js';
+import * as characterFace from '../character/face.js';
+import * as utilityLocationHelper from '../utility/locationhelper.js';
+import * as characterInfo from '../character/info.js';
+import * as systemsGeneralStore from '../systems/generalstore.js';
+import * as systemsInteraction from '../systems/interaction.js';
+import * as systemsInventory from '../systems/inventory.js';
+import * as systemsVehicles from '../systems/vehicles.js';
+import * as systemsJob from '../systems/job.js';
+import * as systemsPhone from '../systems/phone.js';
+import * as systemsSkills from '../systems/skills.js';
+import * as systemsVehicleVendor from '../systems/vehiclevendor.js';
+import * as characterClothing from '../character/clothing.js';
+import * as chat from '../chat/chat.js';
+>>>>>>> 89b5613... Paycheck Deprecation for Reward Point Exchange:resources/orp/server/clientEvents/events.js
 
 // ====================================================
 // Registration
@@ -41,11 +58,6 @@ alt.onClient('character:New', characterInfo.newCharacter);
 
 // Interaction Stuff
 alt.onClient('interaction:Exec', systemsInteraction.attemptToExecuteInteraction);
-
-// Atm Handler
-alt.onClient('atm:Withdraw', systemsAtm.withdraw);
-alt.onClient('atm:Deposit', systemsAtm.deposit);
-alt.onClient('atm:Ready', systemsAtm.ready);
 
 // Clothing Handler
 alt.onClient('clothing:Purchase', characterClothing.purchase);
@@ -102,6 +114,7 @@ alt.onClient('general:BuyItem', systemsGeneralStore.buyItem);
 alt.onClient('reset:Dimension', player => {
     player.saveDimension(0);
 });
+<<<<<<< HEAD:resources/orp/server/clientEvents/events.mjs
 
 // Temporary:
 // teleport to waypoint stuff
@@ -109,3 +122,5 @@ alt.onClient('temporaryTeleport', (player, coords) => {
     player.tempPos = player.pos;
     player.pos = coords;
 });
+=======
+>>>>>>> 89b5613... Paycheck Deprecation for Reward Point Exchange:resources/orp/server/clientEvents/events.js

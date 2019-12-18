@@ -14,7 +14,8 @@
         "download": "^7.1.0",
         "pg": "^7.12.1",
         "sjcl": "^1.0.8",
-        "typeorm": "^0.2.18"
+        "typeorm": "^0.2.18",
+        "xml2js": "^0.4.22"
     },
     "type": "module",
     "devDependencies": {
